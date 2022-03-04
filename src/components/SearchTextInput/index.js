@@ -24,7 +24,7 @@ export default class SearchTextInput extends Component {
           style={{
             flex: 1,
             fontSize: WidthIntoPercent(18),
-            lineHeight: HeightIntoPercent(22),
+            lineHeight: HeightIntoPercent(26),
             color: isDarkMode ? whiteColor : greyColor,
             marginLeft: WidthIntoPercent(17),
             height: HeightIntoPercent(22),

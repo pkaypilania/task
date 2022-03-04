@@ -7,11 +7,11 @@
  */
 
 import React, {Component} from 'react';
-import {StatusBar, StyleSheet, View} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet, View} from 'react-native';
 import SplashScreen from './src/screens/Splash';
 import MainScreen from './src/screens/MainScreen';
 import {HeightIntoPercent, WidthIntoPercent} from './src/utils';
-import {defaultThemeColor} from './src/utils/Color';
+import {blackColor, defaultThemeColor} from './src/utils/Color';
 import HandleScrollViewLayout from './src/components/handleScrollViewLayout';
 import ThemeContextProvider from './src/ThemeContext/themeContext';
 
@@ -36,19 +36,24 @@ class App extends Component {
     const {splashScreenShow} = this.state;
     return (
       <ThemeContextProvider>
-        <View style={style.root}>
-          <StatusBar
-            backgroundColor={defaultThemeColor}
-            barStyle="light-content"
-          />
-          {splashScreenShow ? (
-            <SplashScreen />
-          ) : (
-            <HandleScrollViewLayout>
-              <MainScreen />
-            </HandleScrollViewLayout>
-          )}
-        </View>
+        <SafeAreaView
+          style={{
+            backgroundColor: defaultThemeColor,
+          }}>
+          <View style={style.root}>
+            <StatusBar
+              backgroundColor={defaultThemeColor}
+              barStyle="light-content"
+            />
+            {splashScreenShow ? (
+              <SplashScreen />
+            ) : (
+              <HandleScrollViewLayout>
+                <MainScreen />
+              </HandleScrollViewLayout>
+            )}
+          </View>
+        </SafeAreaView>
       </ThemeContextProvider>
     );
   }

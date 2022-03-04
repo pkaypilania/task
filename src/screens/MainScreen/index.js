@@ -30,6 +30,10 @@ export default class MainScreen extends Component {
         axios({
           method: 'GET',
           url: `http://api.themoviedb.org/3/search/movie?api_key=0164b131f0cb0267101e77927102ede6&query=${input}`,
+          headers: {
+            'Content-type': 'Application/json',
+            Accept: 'Application/json',
+          },
         })
           .then(response => {
             console.log('response==>', response?.data?.results);
@@ -83,10 +87,10 @@ export default class MainScreen extends Component {
         alignItems: 'center',
         justifyContent: 'center',
       },
-      checkImg: {
-        width: WidthIntoPercent(84),
-        height: HeightIntoPercent(84),
-        marginVertical: 40,
+      movieImg: {
+        width: WidthIntoPercent(200),
+        height: HeightIntoPercent(300),
+        borderRadius: WidthIntoPercent(15),
       },
     });
     return (
@@ -115,11 +119,7 @@ export default class MainScreen extends Component {
                     : 'https://ptsse.co.id/assets/gambar_kategori/images.png',
                 }}
                 resizeMode="contain"
-                style={{
-                  width: WidthIntoPercent(200),
-                  height: HeightIntoPercent(300),
-                  borderRadius: WidthIntoPercent(15),
-                }}
+                style={style.movieImg}
               />
               <CustomText
                 color={isDarkMode ? whiteColor : blackColor}
